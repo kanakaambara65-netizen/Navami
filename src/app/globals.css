@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ── Noguchi Blue & White Palette (strictly from reference) ── */
+  --slate:        #6d8fa3; /* Primary Slate Blue */
+  --sand:         #dbd0be; /* Soft Warm Linen Sand */
+  --sage:         #93acaa; /* Misted Seafoam Sage */
+  --deep:         #2f3d4d; /* Deep Slate Navy Charcoal */
+  --white:        #ffffff; /* Crisp Pure White */
+  --bg-frame:     #e4ded5; /* Soft Noguchi Frame Tone */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-frame);
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #ffffff; }
+::-webkit-scrollbar-thumb { background: #6d8fa3; border-radius: 9999px; }
+
+/* Font utilities */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Responsive Bootstrap-style fluid scaling for mobile viewports */
+@media (max-width: 480px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+@media (max-width: 360px) {
+  html {
+    font-size: 13.5px;
+  }
+}
+
+/* Fluid responsive typography and button scaling (Bootstrap-like responsiveness) */
+@layer utilities {
+  .fluid-h1 {
+    font-size: clamp(2rem, 5vw + 1rem, 5rem);
+    line-height: 1.05;
+  }
+  .fluid-h2 {
+    font-size: clamp(1.5rem, 3vw + 0.5rem, 2.75rem);
+    line-height: 1.15;
+  }
+  .fluid-h3 {
+    font-size: clamp(1.15rem, 2vw + 0.4rem, 1.65rem);
+    line-height: 1.25;
+  }
+  .fluid-btn {
+    font-size: clamp(0.8rem, 1vw + 0.4rem, 1rem);
+    padding: clamp(0.65rem, 1vw + 0.35rem, 1rem) clamp(1.25rem, 2vw + 0.5rem, 2.25rem);
+  }
+}
+
+/* Mobile-first touch targets & input auto-zoom prevention */
+@media (max-width: 640px) {
+  input, textarea, select {
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+  }
+  
+  /* Ensure no element causes horizontal scroll on small phones */
+  img, iframe, video {
+    max-width: 100%;
+  }
+}
